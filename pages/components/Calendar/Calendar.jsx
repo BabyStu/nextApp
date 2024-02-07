@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import '../../../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
-import './CalendarOverride.css';
+// import './CalendarOverride.css';
 
 const CalendarComponent = () => {
   const [tasks, setTasks] = useState([]);

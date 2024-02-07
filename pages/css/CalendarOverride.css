@@ -3,7 +3,7 @@
   }
 
   .rbc-off-range-bg {
-    background: #7d7676;
+    background: #7d7676 !important;
 }
 
 /* .rbc-now {
@@ -11,5 +11,5 @@
 } */
 
 .rbc-today {
-    background-color: green;
+    background-color: green !important;
 }

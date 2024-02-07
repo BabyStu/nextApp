@@ -1,15 +1,17 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Delete from "./Delete.jsx";
 
 const NoteTakingComponent = () => {
-  const [notes, setNotes] = useState(() => {
-    const savedNotes = localStorage.getItem("notes");
-    return savedNotes ? JSON.parse(savedNotes) : [];
-  });
+  const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedNotes = localStorage.getItem("notes");
+      setNotes(savedNotes ? JSON.parse(savedNotes) : []);
+    }
+  }, []);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -22,7 +24,9 @@ const NoteTakingComponent = () => {
   const handleSave = () => {
     setNotes((prevNotes) => {
       const newNotes = [...prevNotes, { title, content }];
-      localStorage.setItem("notes", JSON.stringify(newNotes));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("notes", JSON.stringify(newNotes));
+      }
       return newNotes;
     });
     setTitle("");
@@ -32,7 +36,9 @@ const NoteTakingComponent = () => {
   const handleDelete = (index) => {
     setNotes((prevNotes) => {
       const newNotes = prevNotes.filter((note, i) => i !== index);
-      localStorage.setItem("notes", JSON.stringify(newNotes));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("notes", JSON.stringify(newNotes));
+      }
       return newNotes;
     });
   };
