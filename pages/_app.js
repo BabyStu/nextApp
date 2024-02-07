@@ -1,5 +1,5 @@
-import './styles/globals.css'
-import './styles/CalendarOverride.css'
+import './globals.css'
+import './CalendarOverride.css'
 
 
 function MyApp({ Component, pageProps }) {
