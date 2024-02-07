@@ -159,10 +159,16 @@ const TasksComponent = () => {
                       <p className="text-base m-2">{task.description}</p>
                       <p className="text-sm italic border-t-2 border-dotted pt-2">
                         <span>Due on </span>
-                        {new Date(task.date).toLocaleDateString([], {
-                          month: "2-digit",
-                          day: "2-digit",
-                        })}
+                        {new Date(task.date + "T" + task.time).toLocaleString(
+                          [],
+                          {
+                            // year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          }
+                        )}
                       </p>
                     </div>
                     <div className="">
